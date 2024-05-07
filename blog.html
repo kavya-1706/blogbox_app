@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFD0D0;
+            color: #833d7e;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #f4e1e1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 500px; 
+        }
+        input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #833d7e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .actions {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+    background-color: #833d7e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #833d7e;
+}
+    </style>
+</head>
+<body>
+    <h1>BlogBox</h1>
+    <h3>"Unbox Your Thoughts, BlogBox: Where Ideas Find Home."</h3>
+    <h4>Your own personal blog :)</h4>
+
+
+    <form action="/search" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Search blog posts...">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+
+    <ul>
+    % for post in blog_posts:
+    <div class="card">
+        <p>{{ post['title'] }}</p>
+        <p>{{ post['content'] }}</p>
+        % if post['image_url'] and post['image_url']!="/uploads/empty":
+            <img src="{{ post['image_url'] }}">  
+            <br>
+        % else:
+            <br>
+        % end
+        <div class="actions">
+        <a href="/updatepost/{{ post['_id'] }}">Update</a> <br>
+    
+        <a href="/deletepost/{{ post['_id'] }}" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+        <br> <br> <br>
+    </div>
+</div>
+    % end
+    </ul>
+    <br>
+    <a href="/addpost">Add Post</a>
+    <br> <br>
+    <a href="/">Log Out</a>
+</body>
+</html>

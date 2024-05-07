@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Add Post</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #FFD0D0;
+    color: #833d7e;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #833d7e;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #833d7e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #833d7e;
+}
+    </style>
+</head>
+<body>
+    <h1>Add Post</h1>
+    <form action="/addpost" method="post" enctype="multipart/form-data">
+        Title: <input type="text" name="title"><br>
+        Content: <textarea name="content" rows="4" cols="50"></textarea><br>
+        Image: <input type="file" name="image"><br>
+       <br>
+        <input type="submit" value="Add Post">
+    </form>
+    <br>
+    <a href="/blog">Back to Blog Main Page</a>
+</body>
+</html>
